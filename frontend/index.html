@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher Arms Race</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Cipher Arms Race</h1>
+        <p>Encryption vs Decryption vs Attack</p>
+    </header>
+
+    <main>
+        <section class="chat-container">
+
+            <div class="participant alice">
+                <h2>Alice</h2>
+                <p>Sender</p>
+            </div>
+
+            <div class="participant bob">
+                <h2>Bob</h2>
+                <p>Receiver</p>
+            </div>
+
+            <div class="participant eve">
+                <h2>Eve</h2>
+                <p>Attacker</p>
+            </div>
+
+        </section>
+
+        <section class="encryption-panel">
+            <h2>Level 1: Caesar Cipher</h2>
+
+            <label for="plaintext">Enter your message:</label>
+            <textarea id="plaintext" placeholder="Type a message..."></textarea>
+
+            <label for="shift">Choose shift value:</label>
+            <input type="number" id="shift" min="0" max="25" value="3">
+
+            <button id="encrypt-btn">Encrypt Message</button>
+
+            <div class="result">
+                <h3>Ciphertext</h3>
+                <p id="ciphertext">Waiting for message...</p>
+            </div>
+
+            <button id="decrypt-btn">Decrypt Message</button>
+
+            <div class="result">
+                <h3>Decrypted Message</h3>
+                <p id="decrypted">Waiting for decryption...</p>
+            </div>
+        </section>
+    
+
+<!-- LEVEL 2: VIGENERE CIPHER -->
+
+<section class="encryption-panel vigenere-panel">
+
+    <h2>Level 2: Vigenere Cipher</h2>
+
+    <label for="vigenere-plaintext">
+        Enter your message:
+    </label>
+
+    <textarea
+        id="vigenere-plaintext"
+        placeholder="Type your message..."
+    ></textarea>
+
+    <label for="vigenere-key">
+        Enter encryption key:
+    </label>
+
+    <input
+        type="text"
+        id="vigenere-key"
+        placeholder="Example: LEMON"
+    >
+
+    <button id="vigenere-encrypt-btn">
+        Encrypt Message
+    </button>
+
+    <div class="result">
+        <h3>Ciphertext</h3>
+        <p id="vigenere-ciphertext">
+            Waiting for message...
+        </p>
+    </div>
+
+    <button id="vigenere-decrypt-btn">
+        Decrypt Message
+    </button>
+
+    <div class="result">
+        <h3>Decrypted Message</h3>
+        <p id="vigenere-decrypted">
+            Waiting for decryption...
+        </p>
+    </div>
+
+</section>
+
+    <section class="eve-panel">
+
+    <h2>Eve's Caesar Attack Console</h2>
+
+    <p class="attack-description">
+        Intercepted ciphertext will appear here.
+        Eve will attempt all 26 Caesar shifts.
+    </p>
+
+    <div class="intercepted">
+        <h3>Intercepted Message</h3>
+        <p id="eve-ciphertext">Waiting for intercepted data...</p>
+    </div>
+
+    <button id="attack-btn">Start Brute Force Attack</button>
+
+    <div class="attack-status">
+        <h3>Attack Progress</h3>
+
+        <p id="attack-progress">Waiting for attack...</p>
+
+        <div class="progress-bar">
+            <div id="progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="attack-results">
+        <h3>Possible Plaintexts</h3>
+        <div id="attack-results">
+            No attempts yet.
+        </div>
+    </div>
+
+    <div class="recovered">
+        <h3>Recovered Plaintext</h3>
+        <p id="recovered-message">Not recovered yet.</p>
+    </div>
+
+    </section>
+
+    
+<!-- EVE: VIGENERE ATTACK CONSOLE -->
+
+<section class="eve-panel vigenere-eve-panel">
+
+    <h2>Eve's Vigenere Attack Console</h2>
+
+    <p class="attack-description">
+        Eve intercepts multiple messages encrypted
+        with the same repeating keyword.
+    </p>
+
+    <div class="intercepted">
+        <h3>Intercepted Messages</h3>
+
+        <p id="vigenere-sample-count">
+            Messages collected: 0
+        </p>
+
+        <div id="vigenere-intercepted">
+            No intercepted messages yet.
+        </div>
+    </div>
+
+    <button id="vigenere-attack-btn">
+        Eve: Analyze Vigenere Cipher
+    </button>
+
+    <div class="attack-status">
+        <h3>Stage 1 — Key Length Detection</h3>
+
+        <p id="vigenere-attack-status">
+            Waiting for ciphertext...
+        </p>
+
+        <div id="ic-chart"></div>
+    </div>
+
+    <div class="attack-results">
+        <h3>Stage 2 — Key Recovery</h3>
+
+        <p id="vigenere-key-progress">
+            Waiting for key analysis...
+        </p>
+
+        <div id="vigenere-key-letters"></div>
+    </div>
+
+    <div class="recovered">
+        <h3>Recovered Secret Key</h3>
+
+        <p id="vigenere-recovered-key">Not recovered yet.</p>
+    </div>
+
+    <div class="recovered">
+        <h3>Decrypted Messages</h3>
+
+        <div id="vigenere-recovered-messages">
+            Waiting for decryption...
+        </div>
+    </div>
+
+    
+</section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
